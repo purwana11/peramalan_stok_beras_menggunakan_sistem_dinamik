@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="hero-section">
+    <div class="hero-text">
+        <p class="label-pill">New · Versi 2.0</p>
+        <h1>Visualisasi simulasi stok beras dengan pendekatan modern</h1>
+        <p class="subtitle">Unggah riwayat produksi, dapatkan proyeksi stok dalam tiga skenario (optimis, normal, pesimis) sekaligus insight siap presentasi.</p>
+        <div class="hero-stats">
+            <div>
+                <p class="stat-value">20 thn</p>
+                <p class="stat-label">Horizon simulasi</p>
+            </div>
+            <div>
+                <p class="stat-value">3 skenario</p>
+                <p class="stat-label">Normal · Optimis · Pesimis</p>
+            </div>
+            <div>
+                <p class="stat-value">CSV</p>
+                <p class="stat-label">Format data standar</p>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="glass-card">
+            <p class="mini-label">Prakiraan stok (contoh)</p>
+            <img src="/static/hasil_simulasi.png" alt="Contoh grafik simulasi" class="preview-img">
+            <p class="caption">Grafik aktual akan diperbarui setelah Anda mengunggah dataset.</p>
+        </div>
+    </div>
+</section>
+
+<section class="upload-section">
+    <div class="upload-card">
+        <h3>Mulai dengan dataset Anda</h3>
+        <p class="text-muted mb-4">Minimal kolom: <code>year</code>, <code>production</code>, <code>productivity</code>, <code>harvest_area</code>.</p>
+
+        <form action="/process" method="post" enctype="multipart/form-data" class="upload-form">
+            <label class="dropzone">
+                <input type="file" name="dataset" accept=".csv" required hidden>
+                <div class="dropzone-body">
+                    <div class="icon-circle">📁</div>
+                    <p class="dropzone-title">Seret & letakkan CSV Anda</p>
+                    <p class="dropzone-text">atau klik untuk memilih file dari perangkat</p>
+                    <p class="file-name" data-file="">Belum ada file dipilih</p>
+                </div>
+            </label>
+            <button class="btn-primary-gradient" type="submit">Proses Data & Simulasi</button>
+        </form>
+    </div>
+
+    <div class="steps-card">
+        <p class="mini-label">Mengapa perlu simulasi?</p>
+        <ul class="steps-list">
+            <li>
+                <span class="step-index">01</span>
+                <div>
+                    <p class="step-title">Forecast berbasis data historis</p>
+                    <p class="step-desc">Kalkulasi rata-rata produksi tahunan otomatis.</p>
+                </div>
+            </li>
+            <li>
+                <span class="step-index">02</span>
+                <div>
+                    <p class="step-title">Skenario multi asumsi</p>
+                    <p class="step-desc">Bandingkan stok untuk kebijakan normal, optimis, dan pesimis.</p>
+                </div>
+            </li>
+            <li>
+                <span class="step-index">03</span>
+                <div>
+                    <p class="step-title">Visual siap presentasi</p>
+                    <p class="step-desc">Grafik PNG resolusi tinggi langsung dapat diunduh.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

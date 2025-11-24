@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="result-wrapper">
+    <div class="result-card">
+        <div class="result-header">
+            <div>
+                <p class="label-pill">Simulasi selesai</p>
+                <h2>Ringkasan produksi tahunan</h2>
+                <p class="subtitle">Gunakan insight ini untuk merancang strategi ketahanan pangan jangka panjang.</p>
+            </div>
+            <div class="stat-chip">
+                <p class="chip-label">Produksi rata-rata</p>
+                <p class="chip-value">{{ produksi }} ton</p>
+            </div>
+        </div>
+
+        <div class="chart-frame">
+            <img src="/{{ plot_path }}" alt="Grafik simulasi stok" class="result-img">
+        </div>
+
+        <div class="result-actions">
+            <a href="/" class="btn-outline">Simulasi ulang</a>
+            <a href="/{{ plot_path }}" download class="btn-primary-gradient">Unduh grafik</a>
+        </div>
+    </div>
+
+    <aside class="insight-card">
+        <p class="mini-label">Tips interpretasi</p>
+        <ul>
+            <li><strong>Optimis:</strong> skenario terbaik dengan asumsi panen meningkat.</li>
+            <li><strong>Normal:</strong> baseline dari rata-rata historis.</li>
+            <li><strong>Pesimis:</strong> gunakan sebagai batas bawah ketika terjadi anomali produksi.</li>
+        </ul>
+        <p class="caption mt-3">Butuh custom chart atau data story tambahan? Hubungi tim Anda dengan membawa grafik ini sebagai referensi.</p>
+    </aside>
+</section>
+
+{% endblock %}
